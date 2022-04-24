@@ -1,8 +1,10 @@
-# test-project
+# Read me generator
 
-![license badge MIT](https://img.shields.io/badge/license-MIT-green "MIT")## Description
+![license badge MIT](https://img.shields.io/badge/license-MIT-green "MIT")
 
-Provide a short description explaining the what, why, and how of your project.
+## Description
+
+Generated automated read me file
 
 ## Table of Contents
 
@@ -27,11 +29,13 @@ node index.js
 
 ## Tests
 
-npm test
+no test 
 
 ## License
 
-This application is covered under the MIT license.[Link to license.](./LICENSE.txt)/n/n## Questions
+This application is covered under the MIT license. [Link to license.](./LICENSE.txt)
+
+## Questions
 
 [My Github Profile](https://github.com/Disha2022)
 
