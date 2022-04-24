@@ -43,15 +43,15 @@ function generateMarkdown(data) {
     "## Table of Contents\n\n" +
     `- [Installation](#installation)
 - [Usage](#usage)
-- [Credits](#credits)
+- [Contributing Guidelines](#contributing-guidelines)
 - [Tests](#tests)` +
-    "\n\n" +
-    `${data.license === "No License" ? "" : "- [License](#license)\n\n"}` +
+    "\n" +
+    `${data.license === "No License" ? "" : "- [License](#license)\n"}` +
     "- [Questions](#questions)\n\n";
 
   content += "## Installation\n\n" + data.installation + "\n\n";
   content += "## Usage\n\n" + data.usage + "\n\n";
-  content += "## Credits\n\n" + data.contributing + "\n\n";
+  content += "## Contributing Guidelines\n\n" + data.contributing + "\n\n";
   content += "## Tests\n\n" + data.test + "\n\n";
   content += renderLicenseSection(data.license);
   content += renderLicenseLink(data.license, data.name);

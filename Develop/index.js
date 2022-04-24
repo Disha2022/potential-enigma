@@ -36,7 +36,7 @@ const questions = [
     type: "input",
     name: "contributing",
     message: "What's your project contribution guidelines?",
-    default: "https://coding-boot-camp.github.io/full-stack/",
+    default: "[Contributor Covenant](https://www.contributor-covenant.org/)",
   },
   {
     type: "input",
