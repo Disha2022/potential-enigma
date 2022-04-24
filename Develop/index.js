@@ -20,7 +20,9 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-  const content = data.title;
+  let content = "# " + data.title + "\n\n";
+  content += "## Description\n\n";
+
   fs.writeFile(fileName, content, err => {
     if (err) {
       console.error(err)
