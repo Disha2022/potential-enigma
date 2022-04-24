@@ -45,13 +45,27 @@ const questions = [
     type: "list",
     name: "license",
     message: "What license does your project use?",
-    choices: ["ISC", "MIT", "GNU GPLv3"],
+    choices: ["ISC", "MIT", "Apache"],
   },
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
   let content = "# " + data.title + "\n\n";
+
+  let licenseImg = "![license badge ";
+  if (data.license === "MIT") {
+    licenseImg += 'MIT](https://img.shields.io/badge/license-MIT-green "MIT")';
+  }
+  if (data.license === "ISC") {
+    licenseImg += 'ISC](https://img.shields.io/badge/license-ISC-green "ISC")';
+  }
+  if (data.license === "Apache") {
+    licenseImg +=
+      'Apache](https://img.shields.io/badge/license-Apache-blue "Apache")';
+  }
+
+  content += licenseImg + "\n\n";
 
   content += "## Description\n\n" + data.description + "\n\n";
 
@@ -67,14 +81,14 @@ function writeToFile(fileName, data) {
   content += "## Installation\n\n" + data.installation + "\n\n";
   content += "## Usage\n\n" + data.usage + "\n\n";
   content += "## Credits\n\n" + data.contributing + "\n\n";
-  content += "## Tests\n\n" + data.tests + "\n\n";
+  content += "## Tests\n\n" + data.test + "\n\n";
 
-  let licenseImg = "![license badge ";
-  if (data.license === "MIT") {
-    licenseImg += 'mit](https://img.shields.io/badge/license-MIT-green "MIT")';
-  }
-
-  content += "## License\n\n" + data.license + "  " + licenseImg + "\n\n";
+  content +=
+    "## License\n\n" +
+    "This application is covered under the " +
+    data.license +
+    " license." +
+    "\n\n";
 
   fs.writeFile(fileName, content, (err) => {
     if (err) {
