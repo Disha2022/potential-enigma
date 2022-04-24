@@ -2,7 +2,20 @@
 var inquirer = require('inquirer');
 
 // TODO: Create an array of questions for user input
-const questions = [];
+const questions = [
+  {
+  type: 'input',
+  name: 'title',
+  message: "What's your project title?",
+  validate(value) {
+    const pass = value;
+    if (pass) {
+      return true;
+    }
+
+    return 'Please enter a project title';
+  },
+},];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
