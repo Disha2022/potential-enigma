@@ -1,6 +1,7 @@
 // packages needed for this application
 var inquirer = require("inquirer");
 var fs = require("fs");
+const generateMarkdown = require("./utils/generateMarkdown");
 
 // array of questions for user input. follows structure needed for inquirer
 const questions = [
@@ -47,13 +48,19 @@ const questions = [
     type: "list",
     name: "license",
     message: "What license does your project use?",
-    choices: ["ISC", "MIT", "Apache"],
+    choices: ["MIT", "Apache", "No License"],
   },
   {
     type: "input",
     name: "user",
     message: "What is your github username?",
     default: "Disha2022"
+  },
+  {
+    type: "input",
+    name: "name",
+    message: "What is your name?",
+    default: "John Smith"
   },
   {
     type: "input",
@@ -65,50 +72,9 @@ const questions = [
 
 // writes the README file
 function writeToFile(fileName, data) {
-  let content = "# " + data.title + "\n\n";
+  const content = generateMarkdown(data);
 
-  let licenseImg = "![license badge ";
-  if (data.license === "MIT") {
-    licenseImg += 'MIT](https://img.shields.io/badge/license-MIT-green "MIT")';
-  }
-  if (data.license === "ISC") {
-    licenseImg += 'ISC](https://img.shields.io/badge/license-ISC-green "ISC")';
-  }
-  if (data.license === "Apache") {
-    licenseImg +=
-      'Apache](https://img.shields.io/badge/license-Apache-blue "Apache")';
-  }
-
-  content += licenseImg + "\n\n";
-
-  content += "## Description\n\n" + data.description + "\n\n";
-
-  content +=
-    "## Table of Contents\n\n" +
-    `- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [Tests](#tests)
-- [License](#license)
-- [Questions](#questions)` +
-    "\n\n";
-
-  content += "## Installation\n\n" + data.installation + "\n\n";
-  content += "## Usage\n\n" + data.usage + "\n\n";
-  content += "## Credits\n\n" + data.contributing + "\n\n";
-  content += "## Tests\n\n" + data.test + "\n\n";
-
-  content +=
-    "## License\n\n" +
-    "This application is covered under the " +
-    data.license +
-    " license." +
-    "\n\n";
-
-  content += "## Questions\n\n" + `[My Github Profile](https://github.com/${data.user})` + "\n\n";
-  content += "If you have additional questions, I can be reached at " + data.email + "\n";
-
-  fs.writeFile(fileName, content, (err) => {
+  fs.writeFileSync(fileName, content, (err) => {
     if (err) {
       console.error(err);
       return;
