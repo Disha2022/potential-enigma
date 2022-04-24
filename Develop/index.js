@@ -52,11 +52,23 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
   let content = "# " + data.title + "\n\n";
+
   content += "## Description\n\n" + data.description + "\n\n";
+  
+  content += "## Table of Contents\n\n" + 
+  `- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [Tests](#tests)
+- [License](#license)` + "\n\n";
+
   content += "## Installation\n\n" + data.installation + "\n\n";
   content += "## Usage\n\n" + data.usage + "\n\n";
-  content += "## Contributing\n\n" + data.contributing + "\n\n";
+  content += "## Credits\n\n" + data.contributing + "\n\n";
   content += "## Tests\n\n" + data.tests + "\n\n";
+
+
+  content += "## License\n\n" + data.license + "\n\n";
 
   fs.writeFile(fileName, content, (err) => {
     if (err) {
@@ -74,7 +86,6 @@ function init() {
     .then((answers) => {
       console.log(answers);
       writeToFile("README.md", answers);
-      // Use user feedback for... whatever!!
     })
     .catch((error) => {
       if (error.isTtyError) {
