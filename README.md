@@ -1,5 +1,9 @@
 # Professional README Generator
 
+![GitHub top language](https://img.shields.io/github/languages/top/Disha2022/readme-generator)
+![GitHub](https://img.shields.io/github/license/Disha2022/readme-generator)
+![GitHub repo size](https://img.shields.io/github/repo-size/Disha2022/readme-generator)
+
 ## Description
 
  A README file is the first thing that a person sees when they visit a repo on GitHub. This project generates a high quality readme file. I built this project to get familiar with how markdown files work, how licenses and badges work, how to use the npm package inquirer, and how nodeJS creates text files. I can now use this tool to quickly create a high quality readme for my future projects.
