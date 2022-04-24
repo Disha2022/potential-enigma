@@ -45,7 +45,7 @@ const questions = [
     type: "list",
     name: "license",
     message: "What license does your project use?",
-    choices: ["Large", "Medium", "Small"],
+    choices: ["ISC", "MIT", "GNU GPLv3"],
   },
 ];
 
@@ -54,21 +54,27 @@ function writeToFile(fileName, data) {
   let content = "# " + data.title + "\n\n";
 
   content += "## Description\n\n" + data.description + "\n\n";
-  
-  content += "## Table of Contents\n\n" + 
-  `- [Installation](#installation)
+
+  content +=
+    "## Table of Contents\n\n" +
+    `- [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
 - [Tests](#tests)
-- [License](#license)` + "\n\n";
+- [License](#license)` +
+    "\n\n";
 
   content += "## Installation\n\n" + data.installation + "\n\n";
   content += "## Usage\n\n" + data.usage + "\n\n";
   content += "## Credits\n\n" + data.contributing + "\n\n";
   content += "## Tests\n\n" + data.tests + "\n\n";
 
+  let licenseImg = "![license badge ";
+  if (data.license === "MIT") {
+    licenseImg += 'mit](https://img.shields.io/badge/license-MIT-green "MIT")';
+  }
 
-  content += "## License\n\n" + data.license + "\n\n";
+  content += "## License\n\n" + data.license + "  " + licenseImg + "\n\n";
 
   fs.writeFile(fileName, content, (err) => {
     if (err) {
