@@ -106,7 +106,7 @@ function writeToFile(fileName, data) {
     "\n\n";
 
   content += "## Questions\n\n" + `[My Github Profile](https://github.com/${data.user})` + "\n\n";
-  content += "If you have additional questions, I can be reached at " + data.email + "\n\n";
+  content += "If you have additional questions, I can be reached at " + data.email + "\n";
 
   fs.writeFile(fileName, content, (err) => {
     if (err) {
