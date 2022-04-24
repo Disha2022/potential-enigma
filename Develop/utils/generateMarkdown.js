@@ -14,7 +14,7 @@ function renderLicenseBadge(license) {
     licenseImg +=
       'Apache](https://img.shields.io/badge/license-Apache-blue "Apache")';
   }
-  licenseImg + "\n\n";
+  licenseImg += "\n\n";
   return licenseImg;
 }
 

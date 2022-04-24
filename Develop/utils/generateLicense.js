@@ -230,7 +230,7 @@ function renderLicenseLink(license, name) {
     }
     //file written successfully
   });
-  return "[Link to license.](./LICENSE.txt)/n/n";
+  return " [Link to license.](./LICENSE.txt)\n\n";
 }
 
 module.exports = renderLicenseLink;
