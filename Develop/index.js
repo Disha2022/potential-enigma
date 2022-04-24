@@ -1,11 +1,13 @@
-// TODO: Include packages needed for this application
+// packages needed for this application
 var inquirer = require("inquirer");
 var fs = require("fs");
 
-// TODO: Create an array of questions for user input
+// array of questions for user input. follows structure needed for inquirer
 const questions = [
   {
+    // inquirer looks for specific types
     type: "input",
+    // this name becomes variable to grab user's input later
     name: "title",
     message: "What's your project title?",
     default: "test-project",
@@ -47,9 +49,21 @@ const questions = [
     message: "What license does your project use?",
     choices: ["ISC", "MIT", "Apache"],
   },
+  {
+    type: "input",
+    name: "user",
+    message: "What is your github username?",
+    default: "Disha2022"
+  },
+  {
+    type: "input",
+    name: "email",
+    message: "What is your email address?",
+    default: "test-user@aol.com"
+  },
 ];
 
-// TODO: Create a function to write README file
+// writes the README file
 function writeToFile(fileName, data) {
   let content = "# " + data.title + "\n\n";
 
@@ -75,7 +89,8 @@ function writeToFile(fileName, data) {
 - [Usage](#usage)
 - [Credits](#credits)
 - [Tests](#tests)
-- [License](#license)` +
+- [License](#license)
+- [Questions](#questions)` +
     "\n\n";
 
   content += "## Installation\n\n" + data.installation + "\n\n";
@@ -90,6 +105,9 @@ function writeToFile(fileName, data) {
     " license." +
     "\n\n";
 
+  content += "## Questions\n\n" + `[My Github Profile](https://github.com/${data.user})` + "\n\n";
+  content += "If you have additional questions, I can be reached at " + data.email + "\n\n";
+
   fs.writeFile(fileName, content, (err) => {
     if (err) {
       console.error(err);
@@ -97,14 +115,15 @@ function writeToFile(fileName, data) {
     }
     //file written successfully
   });
+  console.log('README.md created');
 }
 
-// TODO: Create a function to initialize app
+// function to initialize app
 function init() {
   inquirer
     .prompt(questions)
     .then((answers) => {
-      console.log(answers);
+      // console.log(answers);
       writeToFile("README.md", answers);
     })
     .catch((error) => {
